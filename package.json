@@ -1,7 +1,19 @@
 {
   "name": "rpg-table",
-  "version": "1.0.0",
-  "description": "Stencil Component Starter",
+  "version": "1.0.1",
+  "description": "A simple embeadeable table  and random generator web component.",
+  "keywords": [
+    "rpg"
+  ],
+  "author": "George Bora <gpbora@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GBora/rpg-table"
+  },
+  "homepage": "https://github.com/GBora/rpg-table",
+  "bugs": {
+    "url": "https://github.com/GBora/rpg-table/issues"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
