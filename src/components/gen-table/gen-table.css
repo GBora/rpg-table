@@ -1,0 +1,62 @@
+:host {
+  display: block;
+}
+
+.gen-table {
+  display: block;
+  margin: 2rem;
+  width: max-content;
+  padding: 1rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+}
+
+.gen-table-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.gen-table-result {
+  padding: .5rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.gen-table-btn-wrapper {
+  display: flex;
+  padding: .5rem;
+}
+
+.gen-table-btn-wrapper button {
+  flex: 1;
+}
+
+.gen-table-ml {
+  margin-left: .5rem;
+}
+
+.gen-table-mr {
+  margin-right: .5rem;
+}
+
+.gen-table-mb {
+  margin-bottom: .5rem;
+}
+
+.gen-table-capitalized {
+  text-transform: capitalize;
+}
+
+.gen-table-tb {
+  border: 1px solid #ccc;
+}
+
+.gen-table-tb td,th {
+  border: 1px solid #ccc;
+  padding: .5rem;
+  text-transform: capitalize;
+}
+
