@@ -5,15 +5,7 @@ export const config: Config = {
   taskQueue: 'async',
   outputTargets: [
     {
-      type: 'dist',
-      esmLoaderPath: '../loader'
-    },
-    {
-      type: 'docs-readme'
-    },
-    {
-      type: 'www',
-      serviceWorker: null // disable service workers
+      type: 'dist'
     }
   ]
 };
