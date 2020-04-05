@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, Host, h, Prop, State } from '@stencil/core';
 import IOption from '../../interfaces/IOption';
-import { getRandom, getMaxLength } from '../../utils/utils';
+import { getRandom, getMaxLength, getRandomSubject, initTable } from '../../utils/utils';
 
 @Component({
   tag: 'gen-table',
@@ -19,54 +19,7 @@ export class GenTable implements ComponentInterface {
 
   render() {
 
-    let getRandomSubject = () => {
-      this.generated = [];
-
-      this.options.forEach((optionList, index) => {
-        this.generated.push({
-          name: this.headers[index],
-          value: getRandom<string>(optionList)
-        }) 
-      })
-    }
-
-    if (this.source) {
-      // Reset data 
-      this.tableData = null;
-      this.headers = [];
-      this.options = [];
-      this.rows = [];
-      // this.generated = [];
-
-      try {
-        this.tableData = window[this.source];
-        // Extract the headers
-        this.headers = Object.keys(this.tableData);
-        // Extract each option, options[1] is the array of options for headers[1] 
-        this.headers.forEach((header) => {
-          this.options.push(this.tableData[header]);
-        })
-        let longestOption = getMaxLength(this.options);
-
-        for (let i = 0; i < longestOption; i++) {
-          let newRow = [];
-          this.options.forEach((optionArray) => {
-            if (optionArray[i]) {
-              newRow.push(optionArray[i]);
-            } else {
-              newRow.push("");
-            }
-          });
-          this.rows.push(newRow);
-        }
-        // Build random
-        if (this.generated.length === 0) {
-          getRandomSubject();
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    }
+    [this.tableData, this.headers, this.options, this.rows, this.generated] = initTable(this.source, this.tableData, this.headers, this.options, this.rows, this.generated);
 
     return (
       <Host>
@@ -94,7 +47,9 @@ export class GenTable implements ComponentInterface {
             <div class="gen-table-btn-wrapper">
               <button 
                 class="gen-table-mr"
-                onClick={ () => getRandomSubject() }>
+                onClick={ () => {
+                  this.generated = getRandomSubject(this.options, this.headers);
+                } }>
                 New
               </button>
               <button
